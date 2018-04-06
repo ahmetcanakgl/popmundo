@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Popmundo Tracker:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="popmundo-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Popmundo Tracker:war exploded" />
+    </root>
+  </artifact>
+</component>

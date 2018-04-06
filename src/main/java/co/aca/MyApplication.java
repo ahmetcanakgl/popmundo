@@ -1,21 +1,16 @@
 package co.aca;
 
 import co.aca.config.JwtFilter;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
-import org.springframework.context.ApplicationContext;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.DispatcherServlet;
 
 @SpringBootApplication
-public class MyApplication {
+public class MyApplication extends SpringBootServletInitializer {
 
     @Bean
     public FilterRegistrationBean jwtFilter() {
@@ -26,9 +21,20 @@ public class MyApplication {
         return registrationBean;
     }
 
+    /**
+     * Used when run as JAR
+     */
     public static void main(String[] args) {
         SpringApplication.run(MyApplication.class, args);
     }
+
+    /**
+     * Used when run as WAR
+     */
+    //@Override
+    //protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+    //    return builder.sources(MyApplication.class);
+    //}
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String homepage() {

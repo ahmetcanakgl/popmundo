@@ -6,7 +6,7 @@
 	<groupId>co.aca</groupId>
 	<artifactId>popmundo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<name>Popmundo</name>
 	<description>Popmundo Project</description>
 
@@ -31,8 +31,13 @@
 	    <dependency>
 		    <groupId>mysql</groupId>
 		    <artifactId>mysql-connector-java</artifactId>
-	    </dependency>	 
-    	<!--<dependency>-->
+	    </dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!--<dependency>-->
             <!--<groupId>org.springframework.boot</groupId>-->
             <!--<artifactId>spring-boot-devtools</artifactId>-->
             <!--<optional>true</optional>-->
