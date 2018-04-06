@@ -4,11 +4,11 @@
 	
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>co.aca</groupId>
-	<artifactId>spring-boot-demo</artifactId>
+	<artifactId>popmundo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>spring-demo</name>
-	<description>Spring Boot Demo Project</description>
+	<name>Popmundo</name>
+	<description>Popmundo Project</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -52,11 +52,6 @@
 			<version>2.3.0</version>
 		</dependency>
 		<dependency>
-			<groupId>com.vaadin</groupId>
-			<artifactId>vaadin-spring</artifactId>
-			<version>2.0.0</version>
-		</dependency>
-		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-hibernate4</artifactId>
 			<version>2.9.2</version>
@@ -79,6 +74,15 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.microsoft.azure</groupId>
+				<artifactId>azure-webapp-maven-plugin</artifactId>
+				<version>0.2.0</version>
+				<configuration>
+					<appName>popmundo</appName>
+					<resourceGroup>popmundo</resourceGroup>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
