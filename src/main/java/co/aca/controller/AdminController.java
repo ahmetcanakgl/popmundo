@@ -33,21 +33,26 @@ public class AdminController {
     AndroidPushNotificationsService androidPushNotificationsService;
 
     @RequestMapping("/hi")
-    public @ResponseBody String hiThere(){
+    public @ResponseBody
+    String hiThere() {
         return "hello world!";
     }
 
     @GetMapping("get_users")
-    public ResponseEntity<List<Admin>> getAllAdmins() throws EntityNotFoundException{
-        List<Admin> list = adminService.getAdminList();
-        return new ResponseEntity(new ResponseAdmin(list), HttpStatus.OK);
+    public ResponseEntity<List<Admin>> getAllAdmins(@RequestParam("p") Integer p) throws EntityNotFoundException {
+        if (p == 13) {
+            List<Admin> list = adminService.getAdminList();
+            return new ResponseEntity(new ResponseAdmin(list), HttpStatus.OK);
+        }else{
+            return new ResponseEntity(new ResponseAdmin("Nope.", "0"), HttpStatus.FORBIDDEN);
+        }
     }
 
     @GetMapping("get_user")
     public ResponseEntity<Admin> getAdminById(@RequestParam("id") Integer id) throws EntityNotFoundException {
         Admin admin = adminService.getAdminById(id);
         if (admin == null) {
-            return new ResponseEntity(new ResponseAdmin(new LangString().getNoSuchAnAdmin("tr"),"0"), HttpStatus.OK);
+            return new ResponseEntity(new ResponseAdmin(new LangString().getNoSuchAnAdmin("tr"), "0"), HttpStatus.OK);
         }
 
         return new ResponseEntity(new ResponseAdmin(admin), HttpStatus.OK);
@@ -74,16 +79,16 @@ public class AdminController {
         return new ResponseEntity(new ResponseAdmin(new LangString().getAdded("tr"), "1"), HttpStatus.OK);
     }
 
-    private Date getDate(){
+    private Date getDate() {
 
         DateTime dt = new DateTime();
-        DateTimeZone dtZone = DateTimeZone.forOffsetHoursMinutes(3,0);
+        DateTimeZone dtZone = DateTimeZone.forOffsetHoursMinutes(3, 0);
         DateTime dtus = dt.withZone(dtZone);
 
         return dtus.toLocalDateTime().toDate();
     }
 
-    private void approvedRegistrationPush(PushModel pushModel,String fcmToken, String locale) {
+    private void approvedRegistrationPush(PushModel pushModel, String fcmToken, String locale) {
 
         JSONObject body = new JSONObject();
         JSONObject notification = new JSONObject();

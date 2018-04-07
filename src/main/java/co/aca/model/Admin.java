@@ -11,18 +11,22 @@ import java.util.Date;
 @JsonIgnoreProperties("inspection")
 public class Admin implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int id;
+
+    @Column(name = "pop_id")
+    private int popId;
 
     @Column(name = "ingame_name")
     private String ingameName;
 
     @Column(name = "date")
     private Date createdAt;
+
+    @Column(name = "script_type")
+    private String scriptType;
 
     public void setIngameName(String ingameName) {
         this.ingameName = ingameName;
@@ -44,8 +48,23 @@ public class Admin implements Serializable {
         return ingameName;
     }
 
+    public String getScriptType() {
+        return scriptType;
+    }
+
+    public void setScriptType(String scriptType) {
+        this.scriptType = scriptType;
+    }
+
     public Date getCreatedAt() {
         return createdAt;
     }
 
+    public int getPopId() {
+        return popId;
+    }
+
+    public void setPopId(int popId) {
+        this.popId = popId;
+    }
 }
