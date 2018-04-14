@@ -15,9 +15,7 @@ import java.util.concurrent.CompletableFuture;
 public class AndroidPushNotificationsService {
 
     private static final String FIREBASE_SERVER_KEY =
-            "AAAALeGzOn8:APA91bGvuW4lme955s19aLM2iH1D8ZQhHHiotRIaJ7DU9IAq" +
-                    "ncoEws_z4HolJY-7SZx-UtHvcORk65ZK9DH9MJ60p4ywWBZIQiEW" +
-                    "HMWg4bOnuvyhCyFaE2CAmaF6xtV5Zs7mJ50ow5b_";
+            "AAAAG5W9ZLo:APA91bHOw2DxvCSrAl3rQikftHF4KcOE5KL6FG1YCL_ZRSzvEt2E03WMmsNEAnv6cw32TRTR060sB5YBdOgX6ykel4F42NmbNrBN38hOMThu8eKdV-6aGU3iQg3AzSDp7Qv6hxct-VL8";
     private static final String FIREBASE_API_URL = "https://fcm.googleapis.com/fcm/send";
 
     @Async

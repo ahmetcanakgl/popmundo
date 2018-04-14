@@ -6,6 +6,7 @@ public class PushModel {
     private String message;//İçerik (App Açıkken)
     private String data;
     private String type;
+    private String title;
     //below related to backend
     private String personId;//user or admin id
     private String opType;  //0 = user_register_req > push to super_admins
@@ -18,6 +19,14 @@ public class PushModel {
                             //7 = message to user
 
     private String opContent;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public String getMessage() {
         return message;

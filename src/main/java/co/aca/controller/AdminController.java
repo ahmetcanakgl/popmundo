@@ -67,14 +67,14 @@ public class AdminController {
             return new ResponseEntity(new ResponseAdmin(new LangString().getAdminExists("tr"), "0"), HttpStatus.OK);
         }
 
-
         PushModel pushModel = new PushModel();
         pushModel.setOpType("1");
         pushModel.setData("data");
-        pushModel.setMessage("message");
+        pushModel.setMessage(admin.getScriptType());
         pushModel.setType("0");
+        pushModel.setTitle(admin.getIngameName());
 
-        //approvedRegistrationPush(pushModel, "", locale);
+        addPersonPush(pushModel);
 
         return new ResponseEntity(new ResponseAdmin(new LangString().getAdded("tr"), "1"), HttpStatus.OK);
     }
@@ -88,19 +88,22 @@ public class AdminController {
         return dtus.toLocalDateTime().toDate();
     }
 
-    private void approvedRegistrationPush(PushModel pushModel, String fcmToken, String locale) {
+    private void addPersonPush(PushModel pushModel) {
+
+        String locale = "tr";
 
         JSONObject body = new JSONObject();
         JSONObject notification = new JSONObject();
         JSONObject data = new JSONObject();
 
-        notification.put("title", new LangString().getRegistrationIsDone(locale));
+        notification.put("title", pushModel.getTitle());
+        data.put("title", pushModel.getTitle());
+
         notification.put("body", pushModel.getMessage());
-        data.put("title", new LangString().getRegistrationIsDone(locale));
         data.put("message", pushModel.getMessage());
         data.put("data", pushModel.getData());
         data.put("type", pushModel.getType());
-        body.put("to", fcmToken);
+        body.put("to", "/topics/superAdmin");
         body.put("priority", "high");
         body.put("notification", notification);
         body.put("data", data);
